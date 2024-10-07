@@ -1,4 +1,5 @@
 import flet as fl
+from color import Color
 
 class Note(fl.Container):
     def __init__(self, title, content, bgcolor="#407375", *args, **kwargs):

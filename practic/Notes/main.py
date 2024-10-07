@@ -1,10 +1,11 @@
-from note import Note
-from main_page import show_main_page
 import flet as fl
+from main_page import show_main_page
+from color import Color
+
 
 def main(page: fl.Page):
     # Переменная для хранения выбранного цвета фона
-    background_color = "#407375"
+    background_color = Color.background
 
     # Список для хранения всех заметок
     notes = []
