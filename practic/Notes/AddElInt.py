@@ -1,4 +1,5 @@
 import flet as fl
+from setting import action_setting
 
 def Appbar(page):
     page.add(fl.AppBar(
@@ -8,11 +9,10 @@ def Appbar(page):
         actions=[
             fl.IconButton(
                 fl.icons.SETTINGS,
-                on_click=action_setting(page),
+                on_click=lambda e: action_setting(page),
                 icon_color="#000000"
             )
         ]
     ))
+    page.update()
 
-def action_setting(page):
-    pass

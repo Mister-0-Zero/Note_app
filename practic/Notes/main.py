@@ -1,5 +1,5 @@
 from note import Note
-import AddElInt
+from main_page import show_main_page
 import flet as fl
 
 def main(page: fl.Page):
@@ -10,15 +10,7 @@ def main(page: fl.Page):
     notes = []
 
     # Главная страница с заметками
-    def show_notes_page():
-        page.controls.clear()
-
-        #Добавляем AppBar на страничку
-        AddElInt.Appbar(page)
-
-
-
-    show_notes_page()
+    show_main_page(page)
 
 if __name__ == "__main__":
     fl.app(target=main)
