@@ -2,16 +2,16 @@ import flet as fl
 from setting import Setting
 from color import Color
 
-def Appbar(page):
+def Appbar(user, page):
     page.add(fl.AppBar(
         center_title=True,
-        bgcolor=Color.appbar_notes,
-        title=fl.Text("Notes", color=Color.text),
+        bgcolor=Color.color_user["appbar_notes"],
+        title=fl.Text("Notes", color=Color.color_user["text"]),
         actions=[
             fl.IconButton(
                 fl.icons.SETTINGS,
-                on_click=lambda e: Setting(page),
-                icon_color=Color.button
+                on_click=lambda e: Setting(user, page),
+                icon_color=Color.color_user["button"]
             )
         ]
     ))
