@@ -2,6 +2,7 @@ import flet as fl
 from color import Color
 
 class Note(fl.Container):
+    list_note = []
     def __init__(self, title, content, bgcolor="#407375", *args, **kwargs):
         super().__init__(
             height=200,
@@ -19,3 +20,20 @@ class Note(fl.Container):
             ),
             alignment=fl.alignment.center
         )
+
+    @classmethod
+    def create_note(cls, page):
+        try:
+            name_previous_note = cls.list_note[0][-1]
+        except:
+            name_previous_note = None
+
+        if name_previous_note:
+            name_new_note = "Note_" + str(int(name_previous_note[5:]) + 1)
+        else:
+            name_new_note = "Note_1"
+        Note = page.add(cls(
+            title="-",
+            content="-"
+        ))
+        cls.list_note.append([name_new_note, Note])
