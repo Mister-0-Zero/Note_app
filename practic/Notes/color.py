@@ -18,7 +18,6 @@ class Color:
             cur.execute("SELECT element, value FROM color WHERE user_name=?", (user_name,))
             for element, value in cur.fetchall():
                 cls.color_user[element] = value
-            print(cls.color_user)
 
     @classmethod
     def change_color(cls, user_name, element, value):

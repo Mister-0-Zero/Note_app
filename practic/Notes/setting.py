@@ -1,7 +1,9 @@
 import flet as fl
 from color import Color
+from loguru import logger
 
 def Setting(user, page, dropdown_val=None, color_val="#000000"):
+    logger.info("Rendering a page of setting")
     from main_page import show_main_page
     # Очищаем содержимое страницы
     page.controls.clear()
@@ -47,15 +49,14 @@ def setting_color(user, page, dropdown_val=None, color_val="#000000"):
     def save_new_color(user, page):
         try:
             element = dropdown.value
-            color = input_color.value
+            value = input_color.value
             # Изменение атрибута класса Color
-            setattr(Color, element, color)
-            print(f"{dropdown.value} изменен на {input_color.value}")
-            Color.change_color(user, element, color)
-            if element == "background": page.bgcolor = color
-
+            setattr(Color, element, value)
+            Color.change_color(user, element, value)
+            if element == "background": page.bgcolor = value
+            logger.info(f"Changing the color of {element} to {value}")
             # Перезагружаем страницу настроек с новыми цветами
-            Setting(user, page, element, color)
+            Setting(user, page, element, value)
 
         except Exception as ex:
             print(f"Ошибка: {ex}")
