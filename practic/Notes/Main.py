@@ -1,7 +1,7 @@
-import flet as fl, sqlite3 as sq
-from main_page import show_main_page
-from color import Color
-from tables import create_tables, new_user, check_for_user_availability
+import flet as fl
+from Main_page import show_main_page
+from Color import Color
+from work_with_BD.Tables import create_tables, check_for_user_availability
 from loguru import logger
 
 logger.remove()

@@ -1,9 +1,16 @@
+from loguru import logger
+import sys
+sys.path.append("..")
+from Get_MAC_adress import get_mac_address
+from Color import Color
 import sqlite3 as sq
-from get_MAC_adress import get_mac_address
-from color import Color
+from work_with_BD.Initialization_user import initialization_user
+from work_with_BD.Check_update import check_update
+
+
 
 def new_user(mac_adr):
-    with sq.connect("notes_users.db") as con:
+    with sq.connect("../notes_users.db") as con:
         cur = con.cursor()
         user_count = cur.execute("SELECT COUNT(*) FROM users").fetchone()[0]
         user_name = f"user{user_count + 1}"
@@ -12,7 +19,7 @@ def new_user(mac_adr):
     return user_name
 
 def create_tables():
-    with sq.connect("notes_users.db") as con:
+    with sq.connect("../notes_users.db") as con:
         cur = con.cursor()
         cur.execute("""
             CREATE TABLE IF NOT EXISTS users (
@@ -23,7 +30,7 @@ def create_tables():
             """)
 
 
-    with sq.connect("notes_color.db") as con:
+    with sq.connect("../notes_color.db") as con:
         cur = con.cursor()
         cur.execute("""
         CREATE TABLE IF NOT EXISTS color (
@@ -36,21 +43,32 @@ def create_tables():
         )
         """)
 
+    with sq.connect("user_notes.db") as con:
+        cur = con.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS notes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_name TEXT,
+                name_note TEXT,
+                title TEXT,
+                content TEXT,
+                FOREIGN KEY (user_name) REFERENCES users(user_name)
+            )
+        """)
 
 def check_for_user_availability():
-    with sq.connect("notes_users.db") as con:
+    with sq.connect("../notes_users.db") as con:
         cur = con.cursor()
         mac_adr = get_mac_address()
         if cur.execute("SELECT 1 FROM users WHERE mac_adr=?", (mac_adr,)).fetchone() is None:
             user_name = new_user(mac_adr)
-            initialization_default_color(user_name)
+            initialization_user(user_name)
         else:
             user_name = cur.execute("SELECT name FROM users WHERE mac_adr=?", (mac_adr,)).fetchone()[0]
+            check_update(user_name)
     return user_name
 
-def initialization_default_color(user_name):
-    with sq.connect("notes_color.db") as con:
-        cur = con.cursor()
-        for element, value in Color.color_default.items():
-            cur.execute("INSERT INTO color (user_name, element, value) VALUES (?,?,?)", (user_name, element, value))
-        con.commit()
+
+
+
+
