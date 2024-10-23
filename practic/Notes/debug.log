@@ -1,10 +1,4 @@
-2024-10-21T02:15:10.736115+0300 INFO Main.py 14 Start programm
-2024-10-21T02:15:10.739115+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
-2024-10-21T02:15:10.741113+0300 INFO Main_page.py 10 Rendering the main page
-2024-10-21T02:15:11.517996+0300 INFO Note.py 29 Creating a new note
-2024-10-21T02:15:11.517996+0300 INFO Note.py 39 show page new note
-2024-10-21T02:15:11.517996+0300 INFO Note.py 44 in page note
-2024-10-21T02:15:45.300230+0300 INFO Note.py 75 Note 'Note_1' saved for user 'user1'
-2024-10-21T02:15:45.300230+0300 INFO Main_page.py 10 Rendering the main page
-2024-10-21T02:15:55.196392+0300 INFO Main_page.py 89 Notes were deleted from database
-2024-10-21T02:15:55.196392+0300 INFO Main_page.py 10 Rendering the main page
+2024-10-24T01:24:44.210404+0300 INFO Main.py 14 Start programm
+2024-10-24T01:24:44.212403+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
+2024-10-24T01:24:44.213408+0300 INFO Main_page.py 10 Rendering the main page
+2024-10-24T01:24:45.376749+0300 INFO Setting.py 12 Rendering a page of setting
