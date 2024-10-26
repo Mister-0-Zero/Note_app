@@ -2,48 +2,43 @@ import flet as fl
 from Color import Color
 from loguru import logger
 
-# Переменная для отслеживания состояния отображения элементов
-is_color_setting_visible = False
 
-logger.catch()
-
-
-def Setting(user, page, dropdown_val=None, color_val="#000000"):
-    logger.info("Rendering a page of setting")
-
-    # Очищаем содержимое страницы
-    page.controls.clear()
-
-    # AppBar с иконкой возврата
-    create_object_setting(user, page, dropdown_val, color_val)
-
-    # Обновляем страницу
-    page.update()
-
-
-def toggle_color_setting(user, page, dropdown_val, color_val, container):
-    global is_color_setting_visible
-    if is_color_setting_visible:
-        # Если элементы отображены, скрываем их, очищая контейнер
-        container.content = None
+def toggle_color_setting(user, page, dropdown_val, color_val, state):
+    # Убираем глобальное объявление is_color_setting_visible и используем state
+    if state.is_color_setting_visible:
+        state.container.content = None  # Убираем содержимое контейнера
     else:
-        # Если элементы скрыты, отображаем их
-        dropdown, input_color, save_button, red_slider, green_slider, blue_slider, color_display, Or, rgb_value_text = create_object_color_setting(user, page, dropdown_val, color_val)
-        container.content = fl.Column(controls=[dropdown, input_color, Or, red_slider, green_slider, blue_slider, fl.Row([color_display, rgb_value_text]), save_button])
+        # Создаем элементы интерфейса настройки цвета
+        dropdown, input_color, save_button1, red_slider, green_slider, blue_slider, color_display, Or, rgb_value_text, save_button2 = create_object_color_setting(
+            user, page, dropdown_val, color_val)
 
-    # Переключаем состояние
-    is_color_setting_visible = not is_color_setting_visible
+        # Обновляем содержимое контейнера
+        state.container.content = fl.Column(
+            controls=[
+                dropdown, fl.Row([input_color, save_button1]),
+                Or, red_slider, green_slider, blue_slider,
+                fl.Row([color_display, rgb_value_text, save_button2])
+            ]
+        )
+
+    # Изменяем состояние видимости в state
+    state.is_color_setting_visible = not state.is_color_setting_visible
 
     # Обновляем контейнер и страницу
-    container.update()
+    state.container.update()
     page.update()
 
 
-def save_new_color(user, page, dropdown, input_color):
+def save_new_color(user, page, *args):
     try:
         # Получаем значения из выпадающего списка и поля ввода
-        element = dropdown.value
-        value = input_color.value
+        for instance in args:
+            if isinstance(instance, fl.Dropdown):
+                element = instance.value
+            if isinstance(instance, fl.TextField):
+                value = instance.value
+            if isinstance(instance, fl.Container):
+                value = instance.bgcolor
 
         # Проверка на наличие выбранного элемента и цвета
         if not element:
@@ -68,6 +63,7 @@ def save_new_color(user, page, dropdown, input_color):
         logger.info(f"Changing the color of {element} to {value}")
 
         # Перезагружаем страницу настроек с новыми цветами
+        from Setting.Setting import Setting
         Setting(user, page, element, value)
 
     except Exception as ex:
@@ -78,13 +74,22 @@ def save_new_color(user, page, dropdown, input_color):
 
 def create_object_color_setting(user, page, dropdown_val, color_val):
     global red_slider, green_slider, blue_slider, color_display, rgb_value_text
+
+    # def dropdown_color_change(e):
+    #     if dropdown.text_style.color == 'white':
+    #         dropdown.text_style.color = 'black'
+    #     else: dropdown.text_style.color = 'white'
+    #     dropdown.update()
+    #     page.update()
+
     # Выпадающий список с элементами для изменения цвета
     dropdown = fl.Dropdown(
         label="Select element",
         options=[fl.dropdown.Option(k) for k in Color.color_user.keys() if not k.startswith("__")],
         value=dropdown_val,
-        text_style=fl.TextStyle(color="green"),
-        label_style=fl.TextStyle(color="black")
+        text_style=fl.TextStyle(color="green"),  # Белый цвет для раскрывающегося списка
+        label_style=fl.TextStyle(color="black"),
+        # on_click=lambda e: dropdown_color_change(e)
     )
 
     # Поле ввода для HEX цвета
@@ -92,7 +97,7 @@ def create_object_color_setting(user, page, dropdown_val, color_val):
                                label_style=fl.TextStyle(color="black"))
 
     # Кнопка сохранения
-    save_button = fl.IconButton(
+    save_button1 = fl.IconButton(
         fl.icons.SAVE,
         icon_color=Color.color_user["button"],
         on_click=lambda e: save_new_color(user, page, dropdown, input_color)
@@ -110,12 +115,19 @@ def create_object_color_setting(user, page, dropdown_val, color_val):
     color_display = fl.Container(
         width=400,
         height=200,
-        bgcolor="#ffffff"
+        bgcolor="#000000"
     )
     Or = fl.Text("or", size = 20, color=Color.color_user["text"])
     rgb_value_text = fl.Text(f"RGB(0, 0, 0)", size=20, color=Color.color_user["text"])
 
-    return dropdown, input_color, save_button, red_slider, green_slider, blue_slider, color_display, Or, rgb_value_text
+    save_button2 = fl.IconButton(
+        fl.icons.SAVE,
+        icon_color=Color.color_user["button"],
+        on_click=lambda e: save_new_color(user, page, dropdown, color_display)
+    )
+
+    return dropdown, input_color, save_button1, red_slider, green_slider, blue_slider, color_display, Or, rgb_value_text, save_button2
+
 
 def update_color(e, page):
     # Получаем значения слайдеров
@@ -143,33 +155,3 @@ def value_color_to_hex(value):
     if len(value) < 2:
         return "0" + value
     return value
-
-def create_object_setting(user, page, dropdown_val, color_val):
-    from Main_page import show_main_page
-
-    # Создаем AppBar
-    page.appbar = fl.AppBar(
-        center_title=True,
-        bgcolor=Color.color_user["appbar_setting"],
-        title=fl.Text("Setting", color=Color.color_user["text"]),
-        leading=fl.IconButton(
-            fl.icons.ARROW_BACK,
-            icon_color=Color.color_user["button"],
-            on_click=lambda e: show_main_page(user, page)
-        )
-    )
-
-    # Контейнер для динамического контента
-    container = fl.Container()
-
-    # Текст с событием нажатия, который отображает настройки цвета
-    color_set_text = fl.GestureDetector(
-        content=fl.Text("-Color setting:", color=Color.color_user["text"], size=20),
-        on_tap=lambda e: toggle_color_setting(user, page, dropdown_val, color_val, container)
-    )
-
-    # Добавляем элементы на страницу
-    page.add(fl.Column([color_set_text, container]))
-
-    # Обновляем страницу
-    page.update()

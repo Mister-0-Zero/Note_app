@@ -1,5 +1,5 @@
 import flet as fl
-from Setting import Setting
+from Setting.Setting import Setting
 from Color import Color
 
 def Appbar(user, page):

@@ -1,4 +1,20 @@
-2024-10-24T01:24:44.210404+0300 INFO Main.py 14 Start programm
-2024-10-24T01:24:44.212403+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
-2024-10-24T01:24:44.213408+0300 INFO Main_page.py 10 Rendering the main page
-2024-10-24T01:24:45.376749+0300 INFO Setting.py 12 Rendering a page of setting
+2024-10-27T01:43:35.696266+0300 INFO Main.py 14 Start programm
+2024-10-27T01:43:35.698264+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
+2024-10-27T01:43:35.699265+0300 INFO Main_page.py 10 Rendering the main page
+2024-10-27T01:43:36.988446+0300 INFO Setting.py 13 Rendering a page of setting
+2024-10-27T01:43:36.990442+0300 INFO Setting.py 48 Conteiner: container {}
+2024-10-27T01:43:42.332246+0300 INFO setting_color.py 63 Changing the color of text to #004136
+2024-10-27T01:43:42.332246+0300 INFO Setting.py 13 Rendering a page of setting
+2024-10-27T01:43:42.334263+0300 INFO Setting.py 48 Conteiner: container {}
+2024-10-27T01:43:48.050620+0300 INFO setting_color.py 63 Changing the color of text to #00418a
+2024-10-27T01:43:48.050620+0300 INFO Setting.py 13 Rendering a page of setting
+2024-10-27T01:43:48.052562+0300 INFO Setting.py 48 Conteiner: container {}
+2024-10-27T01:43:51.290509+0300 INFO setting_color.py 63 Changing the color of text to #0041eb
+2024-10-27T01:43:51.291510+0300 INFO Setting.py 13 Rendering a page of setting
+2024-10-27T01:43:51.292513+0300 INFO Setting.py 48 Conteiner: container {}
+2024-10-27T01:43:54.940734+0300 INFO setting_color.py 63 Changing the color of text to #00ffeb
+2024-10-27T01:43:54.940734+0300 INFO Setting.py 13 Rendering a page of setting
+2024-10-27T01:43:54.942737+0300 INFO Setting.py 48 Conteiner: container {}
+2024-10-27T01:44:00.139762+0300 INFO setting_color.py 63 Changing the color of text to #000100
+2024-10-27T01:44:00.139762+0300 INFO Setting.py 13 Rendering a page of setting
+2024-10-27T01:44:00.141785+0300 INFO Setting.py 48 Conteiner: container {}
