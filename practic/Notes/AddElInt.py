@@ -5,7 +5,7 @@ from Color import Color
 def Appbar(user, page):
     page.add(fl.AppBar(
         center_title=True,
-        bgcolor=Color.color_user["appbar_notes"],
+        bgcolor=Color.color_user["appbar"],
         title=fl.Text("Notes", color=Color.color_user["text"]),
         actions=[
             fl.IconButton(

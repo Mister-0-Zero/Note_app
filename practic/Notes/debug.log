@@ -1,20 +1,21 @@
-2024-10-27T01:43:35.696266+0300 INFO Main.py 14 Start programm
-2024-10-27T01:43:35.698264+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
-2024-10-27T01:43:35.699265+0300 INFO Main_page.py 10 Rendering the main page
-2024-10-27T01:43:36.988446+0300 INFO Setting.py 13 Rendering a page of setting
-2024-10-27T01:43:36.990442+0300 INFO Setting.py 48 Conteiner: container {}
-2024-10-27T01:43:42.332246+0300 INFO setting_color.py 63 Changing the color of text to #004136
-2024-10-27T01:43:42.332246+0300 INFO Setting.py 13 Rendering a page of setting
-2024-10-27T01:43:42.334263+0300 INFO Setting.py 48 Conteiner: container {}
-2024-10-27T01:43:48.050620+0300 INFO setting_color.py 63 Changing the color of text to #00418a
-2024-10-27T01:43:48.050620+0300 INFO Setting.py 13 Rendering a page of setting
-2024-10-27T01:43:48.052562+0300 INFO Setting.py 48 Conteiner: container {}
-2024-10-27T01:43:51.290509+0300 INFO setting_color.py 63 Changing the color of text to #0041eb
-2024-10-27T01:43:51.291510+0300 INFO Setting.py 13 Rendering a page of setting
-2024-10-27T01:43:51.292513+0300 INFO Setting.py 48 Conteiner: container {}
-2024-10-27T01:43:54.940734+0300 INFO setting_color.py 63 Changing the color of text to #00ffeb
-2024-10-27T01:43:54.940734+0300 INFO Setting.py 13 Rendering a page of setting
-2024-10-27T01:43:54.942737+0300 INFO Setting.py 48 Conteiner: container {}
-2024-10-27T01:44:00.139762+0300 INFO setting_color.py 63 Changing the color of text to #000100
-2024-10-27T01:44:00.139762+0300 INFO Setting.py 13 Rendering a page of setting
-2024-10-27T01:44:00.141785+0300 INFO Setting.py 48 Conteiner: container {}
+2024-11-08T01:39:44.236119+0300 INFO Main.py 14 Start programm
+2024-11-08T01:39:44.238116+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
+2024-11-08T01:39:44.241126+0300 INFO Main_page.py 10 Rendering the main page
+2024-11-08T01:39:46.166289+0300 INFO Note.py 29 Creating a new note
+2024-11-08T01:39:46.167288+0300 INFO Note.py 39 show page new note
+2024-11-08T01:39:46.167288+0300 INFO Note.py 44 in page note
+2024-11-08T01:39:49.781784+0300 INFO Note.py 75 Note 'Note_1' saved for user 'user1'
+2024-11-08T01:39:49.781784+0300 INFO Main_page.py 10 Rendering the main page
+2024-11-08T01:39:51.647681+0300 INFO Setting.py 13 Rendering a page of setting
+2024-11-08T01:39:51.649678+0300 INFO Setting.py 48 Conteiner: container {}
+2024-11-08T01:40:05.382653+0300 INFO setting_color.py 63 Changing the color of notes to #ffa37b
+2024-11-08T01:40:05.382653+0300 INFO Setting.py 13 Rendering a page of setting
+2024-11-08T01:40:05.384655+0300 INFO Setting.py 48 Conteiner: container {}
+2024-11-08T01:40:06.684252+0300 INFO Main_page.py 10 Rendering the main page
+2024-11-08T01:40:08.959054+0300 INFO Note.py 29 Creating a new note
+2024-11-08T01:40:08.959054+0300 INFO Note.py 39 show page new note
+2024-11-08T01:40:08.959054+0300 INFO Note.py 44 in page note
+2024-11-08T01:40:11.095999+0300 INFO Note.py 75 Note 'Note_1' saved for user 'user1'
+2024-11-08T01:40:11.097004+0300 INFO Main_page.py 10 Rendering the main page
+2024-11-08T01:40:15.931370+0300 INFO Main_page.py 91 Notes were deleted from database
+2024-11-08T01:40:15.931370+0300 INFO Main_page.py 10 Rendering the main page

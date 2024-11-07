@@ -27,7 +27,7 @@ def create_object_setting(user, page, dropdown_val, color_val):
     # Создаем AppBar
     page.appbar = fl.AppBar(
         center_title=True,
-        bgcolor=Color.color_user["appbar_setting"],
+        bgcolor=Color.color_user["appbar"],
         title=fl.Text("Setting", color=Color.color_user["text"]),
         leading=fl.IconButton(
             fl.icons.ARROW_BACK,

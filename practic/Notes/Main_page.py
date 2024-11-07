@@ -18,6 +18,8 @@ def show_main_page(user, page):
     # Добавляем AppBar на страницу
     Appbar(user, page)
 
+    # if background_picture
+
     # Кнопка удаления всех заметок
     DELETE = fl.FloatingActionButton(
         icon=fl.icons.DELETE,
@@ -34,7 +36,7 @@ def show_main_page(user, page):
 
     # Получаем список заметок из базы данных
     list_notes = []
-    with sq.connect("user_notes.db") as con:
+    with sq.connect("BD/notes.db") as con:
         cur = con.cursor()
         list_notes = cur.execute("SELECT title, content FROM notes").fetchall()
 
@@ -43,7 +45,7 @@ def show_main_page(user, page):
     for title, content in list_notes:
         note_containers.append(
             fl.Container(
-                fl.Text(f"{title}: {content}"),
+                Note(title, content),
                 col={"xs": 12, "sm": 6, "md": 4, "lg": 3, "xl": 2},
             )
         )
@@ -82,7 +84,7 @@ def show_main_page(user, page):
 
 
 def delete_all_note(user, page):
-    with sq.connect("user_notes.db") as con:
+    with sq.connect("BD/notes.db") as con:
         cur = con.cursor()
         cur.execute("DELETE FROM notes WHERE user_name=?", (user,))
         con.commit()

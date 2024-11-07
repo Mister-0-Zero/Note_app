@@ -66,7 +66,7 @@ class Note(fl.Container):
     @classmethod
     def exiting_a_note(cls, user, page, name_new_note, title="", content=""):
         try:
-            with sq.connect("user_notes.db") as con:  # Исправил название базы на user_notes.db
+            with sq.connect("BD/notes.db") as con:  # Исправил название базы на user_notes.db
                 cur = con.cursor()
                 # Исправляем запрос: убираем WHERE и добавляем user в VALUES
                 cur.execute("INSERT INTO notes (user_name, name_note, title, content) VALUES (?, ?, ?, ?)",
