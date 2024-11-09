@@ -1,7 +1,8 @@
 import sqlite3 as sq
 import sys
+
 sys.path.append("..")
-from Color import Color
+from support_modul.Color import Color
 
 def initialization_user(user_name):
     initialization_color(user_name)

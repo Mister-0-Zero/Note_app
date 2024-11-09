@@ -1,6 +1,9 @@
 import flet as fl
+import sys
+
+sys.path.append("..")
 from Setting.Setting import Setting
-from Color import Color
+from support_modul.Color import Color
 
 def Appbar(user, page):
     page.add(fl.AppBar(

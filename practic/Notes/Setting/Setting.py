@@ -1,5 +1,6 @@
 import sys
 sys.path.append("..")
+
 from Setting.setting_color import *
 from Setting.State_set import SettingState
 

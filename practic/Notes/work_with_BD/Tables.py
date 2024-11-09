@@ -1,9 +1,10 @@
 from loguru import logger
-import sys
-sys.path.append("..")
-from Get_MAC_adress import get_mac_address
-from Color import Color
 import sqlite3 as sq
+import sys
+
+sys.path.append("..")
+from support_modul.Get_MAC_adress import get_mac_address
+from support_modul.Color import Color
 from work_with_BD.Initialization_user import initialization_user
 from work_with_BD.Check_update import check_update
 

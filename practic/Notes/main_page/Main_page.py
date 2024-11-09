@@ -1,9 +1,12 @@
 import flet as fl
-from AddElInt import Appbar
-from Color import Color
-from Note import Note
 from loguru import logger
 import sqlite3 as sq
+import sys
+
+sys.path.append("..")
+from main_page.AddElInt import Appbar
+from support_modul.Color import Color
+from support_modul.Note import Note
 
 
 def show_main_page(user, page):
@@ -36,7 +39,7 @@ def show_main_page(user, page):
 
     # Получаем список заметок из базы данных
     list_notes = []
-    with sq.connect("BD/notes.db") as con:
+    with sq.connect("../BD/notes.db") as con:
         cur = con.cursor()
         list_notes = cur.execute("SELECT title, content FROM notes").fetchall()
 
@@ -84,7 +87,7 @@ def show_main_page(user, page):
 
 
 def delete_all_note(user, page):
-    with sq.connect("BD/notes.db") as con:
+    with sq.connect("../BD/notes.db") as con:
         cur = con.cursor()
         cur.execute("DELETE FROM notes WHERE user_name=?", (user,))
         con.commit()

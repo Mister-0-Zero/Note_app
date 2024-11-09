@@ -1,8 +1,10 @@
 import flet as fl
-from Main_page import show_main_page
-from Color import Color
-from work_with_BD.Tables import create_tables, check_for_user_availability
 from loguru import logger
+
+from main_page.Main_page import show_main_page
+from support_modul.Color import Color
+from work_with_BD.Tables import create_tables, check_for_user_availability
+
 
 logger.remove()
 logger.add("debug.log", format = "{time} {level} {file} {line} {message}", mode = "w", level="DEBUG")
