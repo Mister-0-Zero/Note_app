@@ -39,7 +39,7 @@ def show_main_page(user, page):
 
     # Получаем список заметок из базы данных
     list_notes = []
-    with sq.connect("../BD/notes.db") as con:
+    with sq.connect("BD/notes.db") as con:
         cur = con.cursor()
         list_notes = cur.execute("SELECT title, content FROM notes").fetchall()
 
@@ -87,7 +87,7 @@ def show_main_page(user, page):
 
 
 def delete_all_note(user, page):
-    with sq.connect("../BD/notes.db") as con:
+    with sq.connect("BD/notes.db") as con:
         cur = con.cursor()
         cur.execute("DELETE FROM notes WHERE user_name=?", (user,))
         con.commit()

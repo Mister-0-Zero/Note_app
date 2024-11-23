@@ -1,0 +1,8 @@
+2024-11-23T18:30:40.232970+0300 INFO Main.py 16 Start programm
+2024-11-23T18:30:40.234968+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
+2024-11-23T18:30:40.236970+0300 INFO Main_page.py 13 Rendering the main page
+2024-11-23T18:30:41.308989+0300 INFO Setting.py 12 Rendering a page of setting
+2024-11-23T18:30:41.311995+0300 INFO Setting.py 42 Conteiner: container {}
+2024-11-23T18:30:47.209471+0300 INFO Main_page.py 13 Rendering the main page
+2024-11-23T18:30:48.063036+0300 INFO Setting.py 12 Rendering a page of setting
+2024-11-23T18:30:48.065036+0300 INFO Setting.py 42 Conteiner: container {}

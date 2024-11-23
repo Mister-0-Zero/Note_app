@@ -1,6 +1,11 @@
 import flet as fl
-from Color import Color
 from loguru import logger
+import sys
+import string
+
+sys.path.append("..")
+from support_modul.Color import Color
+
 
 
 def toggle_color_setting(user, page, dropdown_val, color_val, state):
@@ -14,24 +19,21 @@ def toggle_color_setting(user, page, dropdown_val, color_val, state):
 
         # Обновляем содержимое контейнера
         state.container.content = fl.Column(
-            controls=[
-                dropdown, fl.Row([input_color, save_button1]),
-                Or, red_slider, green_slider, blue_slider,
-                fl.Row([color_display, rgb_value_text, save_button2])
-            ]
+            controls=[dropdown, fl.Row([input_color, save_button1]),
+                      Or, red_slider, green_slider, blue_slider,
+                      fl.Row([color_display, rgb_value_text, save_button2])]
         )
 
-    # Изменяем состояние видимости в state
+    # Переключаем видимость настройки цвета
     state.is_color_setting_visible = not state.is_color_setting_visible
 
-    # Обновляем контейнер и страницу
-    state.container.update()
+    # Обновляем страницу и контейнер
     page.update()
+
 
 
 def save_new_color(user, page, *args):
     try:
-        # Получаем значения из выпадающего списка и поля ввода
         for instance in args:
             if isinstance(instance, fl.Dropdown):
                 element = instance.value
@@ -47,22 +49,19 @@ def save_new_color(user, page, *args):
             page.update()
             return
 
-        if not value:
+        if not value or len(value) != 7 or  all([sim in '0123456789abcdef' for sim in value]):
             logger.warning("No color value provided.")
             page.snack_bar = fl.SnackBar(content=fl.Text("Please enter a valid color value"), open=True)
             page.update()
             return
 
-        # Изменяем цвет элемента
         Color.change_color(user, element, value)
 
-        # Обновляем фон страницы, если выбран элемент "background"
         if element == "background":
             page.bgcolor = value
 
         logger.info(f"Changing the color of {element} to {value}")
 
-        # Перезагружаем страницу настроек с новыми цветами
         from Setting.Setting import Setting
         Setting(user, page, element, value)
 
@@ -112,10 +111,15 @@ def create_object_color_setting(user, page, dropdown_val, color_val):
     # Шкала для синего цвета
     blue_slider = fl.Slider(min=0, max=255, divisions=255, value=0, label="Blue", on_change=lambda e: update_color(e, page))
 
+    r = red_slider.value
+    g = green_slider.value
+    b = blue_slider.value
+
+
     color_display = fl.Container(
         width=400,
         height=200,
-        bgcolor="#000000"
+        bgcolor=f"#{value_color_to_hex(r)}{value_color_to_hex(g)}{value_color_to_hex(b)}"
     )
     Or = fl.Text("or", size = 20, color=Color.color_user["text"])
     rgb_value_text = fl.Text(f"RGB(0, 0, 0)", size=20, color=Color.color_user["text"])

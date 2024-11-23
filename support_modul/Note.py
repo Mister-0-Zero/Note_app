@@ -1,8 +1,11 @@
 import flet as fl
 from loguru import logger
 import sqlite3 as sq
+import sys
 
-from Color import Color
+sys.path.append("..")
+from support_modul.Color import Color
+
 
 
 class Note(fl.Container):
@@ -15,7 +18,7 @@ class Note(fl.Container):
             padding=10,
             border_radius=10,
             border=fl.border.all(1, "black"),
-            bgcolor=bgcolor,
+            bgcolor=Color.color_user["notes"],
             content=fl.Column([
                 fl.Text(title, size=18, italic=True, weight="bold"),
                 fl.Text(content, overflow="clip")
@@ -63,12 +66,10 @@ class Note(fl.Container):
         page.update()
 
 
-
-
     @classmethod
     def exiting_a_note(cls, user, page, name_new_note, title="", content=""):
         try:
-            with sq.connect("../BD/notes.db") as con:  # Исправил название базы на user_notes.db
+            with sq.connect("BD/notes.db") as con:  # Исправил название базы на user_notes.db
                 cur = con.cursor()
                 # Исправляем запрос: убираем WHERE и добавляем user в VALUES
                 cur.execute("INSERT INTO notes (user_name, name_note, title, content) VALUES (?, ?, ?, ?)",
@@ -78,6 +79,6 @@ class Note(fl.Container):
         except Exception as e:
             logger.error(f"Error saving note: {e}")
 
-        from Main_page import show_main_page
+        from main_page.Main_page import show_main_page
         show_main_page(user, page)
 
