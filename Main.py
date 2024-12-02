@@ -12,6 +12,8 @@ logger.add("debug.log", format = "{time} {level} {file} {line} {message}", mode 
 
 logger.catch()
 def main(page: fl.Page):
+    page.window_width = 1900  # Ширина окна
+    page.window_height = 1100  # Высота окна
 
     logger.info("Start programm")
     create_tables()

@@ -11,16 +11,16 @@ from support_modul.Color import Color
 class Note(fl.Container):
 
     list_note = []
-    def __init__(self, title, content, bgcolor="#407375", *args, **kwargs):
+    def __init__(self, title, content, page, bgcolor="#407375", *args, **kwargs):
         super().__init__(
             height=200,
-            width=200,
-            padding=10,
+            width=page.window_width * 0.2,
+            padding=30,
             border_radius=10,
             border=fl.border.all(1, "black"),
             bgcolor=Color.color_user["notes"],
             content=fl.Column([
-                fl.Text(title, size=18, italic=True, weight="bold"),
+                fl.Text(self.formated_title(title), size=18, italic=True, weight="bold"),
                 fl.Text(content, overflow="clip")
             ],
                 alignment="start",
@@ -28,6 +28,10 @@ class Note(fl.Container):
             ),
             alignment=fl.alignment.center
         )
+
+    @classmethod
+    def formated_title(cls, title):
+        return title if len(title) < 20 else title[:17] + "..."
 
     @classmethod
     def create_note(cls, user, page):

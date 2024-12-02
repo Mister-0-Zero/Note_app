@@ -1,8 +1,21 @@
-2024-11-23T18:30:40.232970+0300 INFO Main.py 16 Start programm
-2024-11-23T18:30:40.234968+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
-2024-11-23T18:30:40.236970+0300 INFO Main_page.py 13 Rendering the main page
-2024-11-23T18:30:41.308989+0300 INFO Setting.py 12 Rendering a page of setting
-2024-11-23T18:30:41.311995+0300 INFO Setting.py 42 Conteiner: container {}
-2024-11-23T18:30:47.209471+0300 INFO Main_page.py 13 Rendering the main page
-2024-11-23T18:30:48.063036+0300 INFO Setting.py 12 Rendering a page of setting
-2024-11-23T18:30:48.065036+0300 INFO Setting.py 42 Conteiner: container {}
+2024-12-02T10:15:02.703561+0300 INFO Main.py 18 Start programm
+2024-12-02T10:15:02.713555+0300 INFO Get_MAC_adress.py 8 Reseiving MAC_ADR
+2024-12-02T10:15:02.716559+0300 INFO Main_page.py 13 Rendering the main page
+2024-12-02T10:15:04.176717+0300 INFO Setting.py 12 Rendering a page of setting
+2024-12-02T10:15:04.177720+0300 INFO Setting.py 42 Conteiner: container {}
+2024-12-02T10:15:19.212254+0300 INFO setting_color.py 62 Changing the color of background to #2c3800
+2024-12-02T10:15:19.212254+0300 INFO Setting.py 12 Rendering a page of setting
+2024-12-02T10:15:19.214256+0300 INFO Setting.py 42 Conteiner: container {}
+2024-12-02T10:15:23.814312+0300 INFO setting_color.py 62 Changing the color of background to #2c4d00
+2024-12-02T10:15:23.814312+0300 INFO Setting.py 12 Rendering a page of setting
+2024-12-02T10:15:23.817310+0300 INFO Setting.py 42 Conteiner: container {}
+2024-12-02T10:15:29.043457+0300 INFO setting_color.py 62 Changing the color of background to #2c7c00
+2024-12-02T10:15:29.043457+0300 INFO Setting.py 12 Rendering a page of setting
+2024-12-02T10:15:29.045457+0300 INFO Setting.py 42 Conteiner: container {}
+2024-12-02T10:15:43.920406+0300 INFO setting_color.py 62 Changing the color of background to #687551
+2024-12-02T10:15:43.921423+0300 INFO Setting.py 12 Rendering a page of setting
+2024-12-02T10:15:43.923419+0300 INFO Setting.py 42 Conteiner: container {}
+2024-12-02T10:15:47.262675+0300 INFO setting_color.py 62 Changing the color of background to #597551
+2024-12-02T10:15:47.262675+0300 INFO Setting.py 12 Rendering a page of setting
+2024-12-02T10:15:47.264675+0300 INFO Setting.py 42 Conteiner: container {}
+2024-12-02T10:15:49.622112+0300 INFO Main_page.py 13 Rendering the main page

@@ -7,7 +7,6 @@ sys.path.append("..")
 from support_modul.Color import Color
 
 
-
 def toggle_color_setting(user, page, dropdown_val, color_val, state):
     # Убираем глобальное объявление is_color_setting_visible и используем state
     if state.is_color_setting_visible:
